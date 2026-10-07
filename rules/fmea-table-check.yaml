@@ -1,0 +1,213 @@
+# FMEA 分析表核对 规则库
+#
+# 规则数据与代码分离：替换本文件即可切换规则集版本，无需改动 TypeScript。
+#
+# 条款引用纪律（由 shared/ruleset.ts 强制校验）：
+#   - 每条规则必须写全 document / number / clause / excerpt / kind / source，
+#     且 excerpt 必须是逐字摘录，不得改写。
+#   - kind: direct                       条款直接规定了所检查的要求
+#   - kind: derived-from-principle       条款未直接规定，仅能由原则性条款推论（severity 最多 warn）
+#   - kind: institutional-configuration 阈值出自本机构配置（severity 最多 info）
+#
+# ⚠️⚠️ 本规则库的诚实说明：**excerpt 一律不是引文。**
+#   本插件核对的是"FMEA 分析表"是否齐备、表内是否自洽。
+#   其方法载体包括 **GB/T 7826《系统可靠性分析技术 失效模式和影响分析（FMEA）程序》**、
+#   IEC 60812，以及汽车行业的 AIAG-VDA FMEA 手册。**核查未取得这些文件的逐字条文**，
+#   因此本规则库**不伪造任何"原文"**：每条规则的 excerpt 都写明"该条文本次未取得"，
+#   依据状态放在 note 里如实说明；kind 一律降为 derived-from-principle（封顶 warn）
+#   或 institutional-configuration（封顶 info）。
+#   **取得条文后必须做两件事**：把 excerpt 换成真正的逐字摘录，把 kind 升为 direct。
+#   在那之前，本插件的命中信息只应被读作"这一栏没填 / 这三个数算不出来 / 措施没人负责"，
+#   而**不是**"FMEA 不符合标准"。
+#
+# ⚠️⚠️ 另一条**必须保留**的边界：**本插件绝不判断失效模式是否找全、后果是否分析到位、
+#   严重度/频度/探测度的打分是否恰当、风险是否可接受**。
+#   那些是分析小组的专业判断，也是 FMEA 的价值所在。
+#   → 因此本插件只核对**表内自洽与算术**：
+#     基本分析链是否填齐、S/O/D 是否为可运算的数值、RPN 是否等于三者之积、
+#     高风险条目是否有建议措施与责任人、措施状态是否在册、是否残留模板占位符。
+#   → **RPN 阈值（threshold）出厂为 0（未配置）**，未配置即进 skipped，绝不静默通过。
+
+plugin: dsh-fmea-table-check
+version: "2026.1"
+
+rules:
+  - id: FM-001
+    title: 分析表应填写失效模式、后果或原因
+    severity: warn
+    basis:
+      document: 《系统可靠性分析技术 失效模式和影响分析（FMEA）程序》
+      number: GB/T 7826（现行版本号与条号本次未核实）
+      clause: 关于分析记录内容的条款（本次未取得条号）
+      excerpt: 该条文本次未取得：核查未获得 GB/T 7826 的逐字原文，本规则库不伪造引文。
+      kind: derived-from-principle
+      source: https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=72487561F0A0B469A6C105FBD3652545
+    params:
+      check:
+        kind: presenceAny
+        fields: [failureMode, effect, cause]
+        fix: 补填失效模式、后果与原因；本条只核对是否填写，不判断分析是否到位
+    note: >-
+      **失效模式—后果—原因**构成 FMEA 的基本分析链：缺其中任一环，
+      这一行就没有分析内容，后续的 S/O/D 打分与措施都失去依据。
+      本次未取得明文条号，故封顶 warn。
+      本条只核对"至少填了一个"，**不判断失效模式是否找全、后果是否分析到位**。
+
+  - id: FM-002
+    title: 严重度、频度与探测度应为可运算的正数
+    severity: warn
+    basis:
+      document: 《系统可靠性分析技术 失效模式和影响分析（FMEA）程序》
+      number: GB/T 7826（现行版本号与条号本次未核实）
+      clause: 关于风险评价的条款（本次未取得条号）
+      excerpt: 该条文本次未取得：核查未获得 GB/T 7826 的逐字原文，本规则库不伪造引文。
+      kind: derived-from-principle
+      source: https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=72487561F0A0B469A6C105FBD3652545
+    params:
+      check:
+        kind: number
+        field: severity
+        positive: true
+        fix: 严重度应填写数字；打分口径见本机构或所用手册的评分表
+    note: >-
+      三项打分必须可运算，否则 RPN 算不出来、排序也做不了——这是打分栏的**功能前提**。
+      本次未取得明文条号，故封顶 warn。
+      本条**不设定分值范围**（例如"1~10"），因为不同手册与不同分析类型的评分表不同；
+      需要按本机构口径校验范围时，把本条的 min/max 配上即可，或另加一条 field: occurrence / detection。
+      本条**不判断打分是否恰当**——那需要结合作业实况与评分表逐条判断。
+
+  - id: FM-003
+    title: 风险顺序数应等于严重度、频度与探测度之积
+    severity: warn
+    basis:
+      document: 《系统可靠性分析技术 失效模式和影响分析（FMEA）程序》
+      number: GB/T 7826（现行版本号与条号本次未核实）
+      clause: 关于风险顺序数的条款（本次未取得条号）
+      excerpt: 该条文本次未取得：核查未获得 GB/T 7826 的逐字原文，本规则库不伪造引文。
+      kind: derived-from-principle
+      source: https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=72487561F0A0B469A6C105FBD3652545
+    params:
+      check:
+        kind: productOf
+        resultField: rpn
+        factorFields: [severity, occurrence, detection]
+        tolerance: 0
+    note: >-
+      RPN = S × O × D 是该方法的**定义式**，属纯算术核对，不涉及任何专业判断。
+      本次未取得明文条号，故封顶 warn。
+      本条只在**四个字段都有可解析数值**时执行；缺任一项即进 skipped。
+      ⚠️ 采用 **AIAG-VDA 手册**的分析表不用 RPN 而用 **AP（措施优先级）**，
+      此时本条的 resultField 应改为 AP 栏并把 factorFields 换成该手册的判定依据，
+      或直接停用本条——改规则库即可，无需改代码。
+
+  - id: FM-004
+    title: 高风险条目应填写建议措施
+    severity: info
+    basis:
+      document: 《系统可靠性分析技术 失效模式和影响分析（FMEA）程序》
+      number: GB/T 7826（现行版本号与条号本次未核实）
+      clause: 关于改进措施的条款（本次未取得条号）
+      excerpt: 该条文本次未取得：核查未获得 GB/T 7826 的逐字原文，本规则库不伪造引文。
+      kind: institutional-configuration
+      source: https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=72487561F0A0B469A6C105FBD3652545
+    params:
+      check:
+        kind: thresholdPresence
+        triggerField: severity
+        threshold: 0
+        requiredField: action
+    note: >-
+      threshold 出厂为 0，表示**未配置**，本条进 skipped。
+      依据说明：**"多高算高风险、多高必须提措施"取决于本机构的风险准则**，
+      不同企业、不同分析类型（设计 FMEA／过程 FMEA／设备 FMEA）差别很大；
+      本插件**不硬编码任何阈值**。
+      配置示例：triggerField: severity，threshold: 9（严重度达 9 分及以上须有措施）；
+      或 triggerField: rpn，threshold: 100（RPN 超 100 须有措施）。
+      本条只核对**建议措施栏是否填写**，**不判断措施是否有效、是否可行**。
+
+  - id: FM-005
+    title: 提出建议措施的行应填写责任人与完成期限
+    severity: warn
+    basis:
+      document: 《系统可靠性分析技术 失效模式和影响分析（FMEA）程序》
+      number: GB/T 7826（现行版本号与条号本次未核实）
+      clause: 关于措施跟踪的条款（本次未取得条号）
+      excerpt: 该条文本次未取得：核查未获得 GB/T 7826 的逐字原文，本规则库不伪造引文。
+      kind: derived-from-principle
+      source: https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=72487561F0A0B469A6C105FBD3652545
+    params:
+      check:
+        kind: conditionalPresence
+        conditionField: action
+        requiredFields: [owner, dueAt]
+    note: >-
+      措施若没有责任人与完成期限，就无法跟踪落实——措施栏的**闭环前提**。
+      本次未取得明文条号，故封顶 warn。
+      本条只在**建议措施栏已填写**的行上执行；措施为空的行由 FM-004 负责。
+      字段名按材料经别名解析后的规范名填写（owner 对应责任人，dueAt 对应完成期限）；
+      若本机构表式另有栏名，请把别名加进列映射或调整 requiredFields。
+
+  - id: FM-006
+    title: 措施状态应使用本机构口径的取值
+    severity: info
+    basis:
+      document: 《系统可靠性分析技术 失效模式和影响分析（FMEA）程序》
+      number: GB/T 7826（现行版本号与条号本次未核实）
+      clause: 关于措施状态跟踪的条款（本次未取得条号）
+      excerpt: 该条文本次未取得：核查未获得 GB/T 7826 的逐字原文，本规则库不伪造引文。
+      kind: institutional-configuration
+      source: https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=72487561F0A0B469A6C105FBD3652545
+    params:
+      check:
+        kind: enum
+        field: status
+        values: []
+    note: >-
+      values 出厂为空，表示**未配置**，本条进 skipped。
+      依据说明：措施状态的口径（例如「未开始」「进行中」「已完成」「已关闭」，
+      或「Open」「In Progress」「Closed」）随**本机构分析管理办法**变化，
+      本插件**不硬编码任何取值清单**。本条只核对所填值是否在册，
+      **不判断措施是否真的落实**。
+
+  - id: FM-007
+    title: 分析表应能识别其分析对象
+    severity: warn
+    basis:
+      document: 《系统可靠性分析技术 失效模式和影响分析（FMEA）程序》
+      number: GB/T 7826（现行版本号与条号本次未核实）
+      clause: 关于分析范围与对象的条款（本次未取得条号）
+      excerpt: 该条文本次未取得：核查未获得 GB/T 7826 的逐字原文，本规则库不伪造引文。
+      kind: derived-from-principle
+      source: https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=72487561F0A0B469A6C105FBD3652545
+    params:
+      check:
+        kind: headerPresence
+        fields: [item]
+    note: >-
+      FMEA 是针对**特定产品或过程**开展的分析；表头若不写明分析对象，
+      结论无法追溯到被分析的对象，也无法判断该用哪一套评分表。本次未取得明文条号，故封顶 warn。
+      配置项 item 对应材料顶层的产品/过程名称；
+      若本机构表式还要求写明所用分析方法，把 fields 改为 [item, method] 即可。
+
+  - id: FM-008
+    title: 分析表不应残留未替换的占位符
+    severity: warn
+    basis:
+      document: 《系统可靠性分析技术 失效模式和影响分析（FMEA）程序》
+      number: GB/T 7826（现行版本号与条号本次未核实）
+      clause: 关于分析记录内容的条款（本次未取得条号）
+      excerpt: 该条文本次未取得：核查未获得 GB/T 7826 的逐字原文，本规则库不伪造引文。
+      kind: derived-from-principle
+      source: https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=72487561F0A0B469A6C105FBD3652545
+    params:
+      check:
+        kind: containsAny
+        field: failureMode
+        terms: ['【', '】', '{{', '}}', 'XXX', 'xxx', '待填', '待补充', 'TBD', 'todo', '示例']
+        fix: 失效模式应填写实际内容；残留占位符说明表格是照模板抄的
+    note: >-
+      FMEA 表常由模板复制而来，失效模式栏留下【】、XXX、待填、TBD 之类占位符时，
+      会让人误以为已经完成了分析——**这是分析表类工具最危险的失效方式**。
+      本次未取得明文条号，故封顶 warn。terms 可按本机构模板调整。
+
+disabled: []

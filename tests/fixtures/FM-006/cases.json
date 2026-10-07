@@ -1,0 +1,31 @@
+{
+  "ruleId": "FM-006",
+  "configure": {
+    "FM-006": {
+      "values": [
+        "未开始",
+        "进行中",
+        "已完成",
+        "已关闭"
+      ]
+    }
+  },
+  "pairs": [
+    {
+      "name": "expected-state",
+      "material": "FM-006-compliant.json",
+      "expect": {
+        "ruleId": "FM-006",
+        "count": 0
+      }
+    },
+    {
+      "name": "difference-present",
+      "material": "FM-006-unsafe.json",
+      "expect": {
+        "ruleId": "FM-006",
+        "count": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+import { describeTablePlugin } from './table-plugin-suite.ts'
+import { Config } from '../src/config.ts'
+import { parseMaterial, runCheck, SPEC } from '../src/model.ts'
+import { buildView } from '../src/view.ts'
+import { inject, name, resolvePackageFile, TOOL_NAME } from '../src/index.ts'
+
+describeTablePlugin({
+  name,
+  inject,
+  TOOL_NAME,
+  resolvePackageFile,
+  Config,
+  rulesFile: 'rules/fmea-table-check.yaml',
+  parseMaterial,
+  runCheck,
+  buildView,
+  columnNames: SPEC.columns,
+  samples: {
+    good: {
+      item: '某型阀体加工过程',
+      rows: [
+        {
+          项目: '某型阀体加工过程',
+          功能: '在规定压力下保持密封',
+          失效模式: '密封面泄漏',
+          失效后果: '介质外泄，影响安全',
+          严重度: '8',
+          失效原因: '密封面加工粗糙度超差',
+          频度: '4',
+          探测度: '3',
+          风险优先数: '96',
+          建议措施: '增加密封面粗糙度在线检测',
+          责任人: '张工',
+          完成期限: '2026-06-30',
+          措施状态: '进行中',
+        },
+      ],
+    },
+    unknownColumn: { rows: [{ 备注: '甲' }] },
+  },
+})
