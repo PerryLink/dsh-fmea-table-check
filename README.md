@@ -1,4 +1,23 @@
-# dsh-fmea-table-check
+# dsh-fmea-table-check — FMEA worksheet element completeness and risk priority number consistency check
+
+`dsh-fmea-table-check` reads one FMEA worksheet — rows keyed by the sheet's own column names, in Chinese or English — and checks in it what a sheet can be held to mechanically: that the analysis chain is recorded, that the severity, occurrence and detection scores are operable numbers, that the risk priority number equals their product, that a high-risk row carries an action with an owner and a due date, that action statuses come from your own vocabulary, and that no template placeholder survives in the failure mode.
+
+## What it answers
+
+| You ask | What it answers |
+|---|---|
+| The RPN cell does not equal severity × occurrence × detection — is that caught? | Yes. `FM-003` recomputes `rpn` from severity × occurrence × detection with a tolerance of `0` and reports the row whose stored value differs. It runs only when all four cells hold parseable numbers; if the occurrence score is not a number the rule reports `skipped` rather than a pass. A worksheet built on the AIAG-VDA handbook scores with AP instead of RPN, so repoint `resultField` and `factorFields`, or disable the rule. |
+| The severity cell holds `高` instead of a score. What happens? | `FM-002` requires severity to be an operable positive number and reports the row when it is not. Its check names the `severity` field only, so occurrence and detection need the same rule added with a different `field`; it sets no score range, so it does not enforce a scale from 1 to 10 and does not judge whether a score is appropriate. A score it cannot parse also sends `FM-003` to `skipped`, because the product cannot be recomputed. |
+| A row recommends an action, but the owner and the due date are blank. | `FM-005` runs on every row whose recommended-action cell is filled and requires both `owner` and `dueAt`; it reports the row missing either one. Those are the canonical names after alias resolution, so a sheet with other column headers needs the alias in the column mapping or `requiredFields` adjusted. It checks that the two cells are filled — not that the date is realistic or that the owner has accepted it. Rows with an empty action cell are `FM-004`'s business. |
+| Our worksheet never says which product or process it is analysing. | `FM-007` reads the sheet header's `item` and reports it when the analysis subject is missing: an FMEA is carried out for a specific product or process, and without it the conclusions cannot be traced back or matched to a scoring table. It is a presence check — an analysis subject that is filled in but wrong is not reported. If your sheets must also name the method used, add `method` to its `fields`. |
+| Some rows still read `待填` or `XXX` in the failure-mode column, and other rows have nothing there at all. | `FM-008` reports a row whose failure-mode cell still contains one of the pack's placeholder terms (`【`, `】`, `{{`, `}}`, `XXX`, `xxx`, `待填`, `待补充`, `TBD`, `todo`, `示例`), because a sheet copied from a template reads as a finished analysis; it reads the failure-mode column only, and `terms` follows your template. `FM-001` reports a row where failure mode, effect and cause are all blank, but it only requires one of the three to be filled — a cell holding `待填` satisfies `FM-001` and is caught by `FM-008` instead. Neither rule judges whether the failure modes are complete or the consequences analysed far enough. |
+| The report lists `FM-004` and `FM-006` as `skipped`. Is something wrong? | No. Both ship unconfigured and the pack reports that instead of passing silently. `FM-004`'s `threshold` is `0`, which reads as not configured, so no row counts as high-risk until you set your own risk criterion — for example `triggerField: severity` with `threshold: 9`, or `triggerField: rpn` with `threshold: 100`. `FM-006`'s `values` list is empty, so the action-status vocabulary is not checked until you list your own values. Once configured, `FM-004` only checks that a high-risk row's action cell is filled — not that the action is effective or feasible — and `FM-006` only checks that a status is in the configured list, not that the action was carried out. |
+
+## Standards it follows
+
+| Document | Number | Cited by rules |
+|---|---|---|
+| 《系统可靠性分析技术 失效模式和影响分析（FMEA）程序》 | GB/T 7826（现行版本号与条号本次未核实） | FM-001, FM-002, FM-003, FM-004, FM-005, FM-006, FM-007, FM-008 |
 
 **Boundary:** this plugin checks an **FMEA worksheet** for what a sheet can be held to mechanically — that
 the analysis chain is recorded, that the severity / occurrence / detection scores are operable numbers,

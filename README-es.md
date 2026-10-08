@@ -1,4 +1,23 @@
-# dsh-fmea-table-check
+# dsh-fmea-table-check — Verificación de la completitud de los elementos de la hoja de FMEA y de la consistencia del número de prioridad de riesgo
+
+`dsh-fmea-table-check` lee una hoja de FMEA —filas indexadas por los propios nombres de columna de la hoja, en chino o en inglés— y comprueba en ella lo que a una hoja se le puede exigir mecánicamente: que la cadena de análisis esté registrada, que las puntuaciones de severidad, ocurrencia y detección sean números operables, que el número de prioridad de riesgo sea igual a su producto, que una fila de riesgo alto lleve una acción con responsable y fecha límite, que los estados de las acciones procedan de su propio vocabulario y que no sobreviva ningún marcador de plantilla en el modo de fallo.
+
+## Qué responde
+
+| Usted pregunta | Qué responde |
+|---|---|
+| La celda del RPN no coincide con severidad × ocurrencia × detección, ¿se detecta? | Sí. `FM-003` recalcula `rpn` como severidad × ocurrencia × detección con una tolerancia de `0` y señala la fila cuyo valor almacenado difiere. Solo se ejecuta cuando las cuatro celdas contienen números analizables; si la puntuación de ocurrencia no es un número, la regla informa `skipped` en lugar de aprobar. Una hoja puntuada con el manual AIAG-VDA usa AP en vez de RPN: reoriente `resultField` y `factorFields`, o desactive la regla. |
+| La celda de severidad contiene `高` en lugar de una puntuación. ¿Qué ocurre? | `FM-002` exige que la severidad sea un número positivo operable e informa de la fila cuando no lo es. Su comprobación apunta solo al campo `severity`, así que ocurrencia y detección requieren la misma regla añadida con otro `field`; no fija rango de valores, de modo que no impone una escala de 1 a 10 ni juzga si la puntuación es adecuada. Una puntuación que no puede analizar también envía `FM-003` a `skipped`, porque el producto no puede recalcularse. |
+| Una fila propone una acción, pero el responsable y la fecha límite están vacíos. | `FM-005` se ejecuta en toda fila cuya celda de acción recomendada esté rellena y exige `owner` (responsable) y `dueAt` (fecha límite); informa de la fila a la que le falta uno de los dos. Son los nombres canónicos tras resolver los alias, así que una hoja con otros encabezados necesita el alias en el mapeo de columnas o `requiredFields` ajustado. Comprueba que las dos celdas estén rellenas, no que la fecha sea realista ni que el responsable la haya aceptado. Las filas sin acción son competencia de `FM-004`. |
+| Nuestra hoja nunca dice qué producto o proceso analiza. | `FM-007` lee el `item` de la cabecera y lo informa cuando falta el sujeto de análisis: un FMEA se realiza para un producto o proceso concreto y sin él las conclusiones no se pueden rastrear ni asociar a una tabla de puntuación. Es una comprobación de presencia: un sujeto relleno pero equivocado no se informa. Si sus hojas deben indicar también el método empleado, añada `method` a sus `fields`. |
+| Algunas filas todavía dicen `待填` o `XXX` en la columna de modo de fallo, y otras no tienen nada. | `FM-008` informa de la fila cuyo modo de fallo aún contiene uno de los términos marcadores del paquete (`【`, `】`, `{{`, `}}`, `XXX`, `xxx`, `待填`, `待补充`, `TBD`, `todo`, `示例`), porque una hoja copiada de una plantilla se lee como análisis terminado; solo lee la columna del modo de fallo, y `terms` se ajusta a su plantilla. `FM-001` informa de la fila en la que modo de fallo, efecto y causa están los tres vacíos, pero solo exige uno de los tres: una celda con `待填` satisface `FM-001` y la detecta `FM-008`. Ninguna de las dos juzga si los modos de fallo están completos o si los efectos se analizaron lo suficiente. |
+| El informe muestra `FM-004` y `FM-006` como `skipped`. ¿Hay algún problema? | No. Ambas vienen sin configurar y el paquete lo informa en lugar de aprobar en silencio. El `threshold` de `FM-004` es `0`, que se lee como no configurado, así que ninguna fila cuenta como riesgo alto hasta que fije su criterio de riesgo: por ejemplo `triggerField: severity` con `threshold: 9`, o `triggerField: rpn` con `threshold: 100`. La lista `values` de `FM-006` está vacía, así que el vocabulario de estados no se comprueba hasta que enumere sus propios valores. Una vez configuradas, `FM-004` solo comprueba que la celda de acción de una fila de riesgo alto esté rellena —no que la acción sea eficaz o viable— y `FM-006` solo comprueba que el estado figure en la lista configurada, no que la acción se haya llevado a cabo. |
+
+## Normas que sigue
+
+| Documento | Número | Reglas que lo citan |
+|---|---|---|
+| 《系统可靠性分析技术 失效模式和影响分析（FMEA）程序》 | GB/T 7826（现行版本号与条号本次未核实） | FM-001, FM-002, FM-003, FM-004, FM-005, FM-006, FM-007, FM-008 |
 
 **Boundary:** this plugin checks an **FMEA worksheet** for what a sheet can be held to mechanically — that
 the analysis chain is recorded, that the severity / occurrence / detection scores are operable numbers,
