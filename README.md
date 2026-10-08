@@ -51,8 +51,7 @@ in Chinese or English — applies a versioned rule pack, and returns a report.
 ## Install
 
 ```sh
-pnpm pack
-dsh plugin --profile <name> add ./dsh-fmea-table-check-0.1.0.tgz
+dsh plugin --profile <name> add dsh-fmea-table-check
 dsh --profile <name> --dump-config | grep 'dsh-fmea-table-check'
 ```
 

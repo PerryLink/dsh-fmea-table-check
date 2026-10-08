@@ -39,8 +39,7 @@ and they are where FMEA's value lies.**
 ## Install
 
 ```sh
-pnpm pack
-dsh plugin --profile <name> add ./*.tgz
+dsh plugin --profile <name> add dsh-fmea-table-check
 dsh --profile <name> --dump-config | grep 'dsh-fmea-table-check'
 ```
 
