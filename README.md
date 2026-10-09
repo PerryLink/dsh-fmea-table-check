@@ -1,6 +1,14 @@
 # dsh-fmea-table-check — FMEA worksheet element completeness and risk priority number consistency check
 
+[![DSH Market](https://raw.githubusercontent.com/2BingLing/dsh-market/master/assets/readme/badge-listed-en.svg)](https://dsh.market/)
+
 `dsh-fmea-table-check` reads one FMEA worksheet — rows keyed by the sheet's own column names, in Chinese or English — and checks in it what a sheet can be held to mechanically: that the analysis chain is recorded, that the severity, occurrence and detection scores are operable numbers, that the risk priority number equals their product, that a high-risk row carries an action with an owner and a due date, that action statuses come from your own vocabulary, and that no template placeholder survives in the failure mode.
+
+## What it looks like
+
+![Terminal demo of dsh-fmea-table-check: real output over its FM-002 fixture](https://raw.githubusercontent.com/PerryLink/dsh-fmea-table-check/main/docs/assets/dsh-fmea-table-check-demo.png)
+
+Real output from this plugin over its own `FM-002` test fixture — not a mock-up. The rule pack ships no invented quotations, so a finding names both the clause it applied and the fact that the clause text was not obtained.
 
 ## What it answers
 

@@ -1,6 +1,14 @@
 # dsh-fmea-table-check — FMEA 分析表要素齐备性与风险顺序数一致性核对
 
+[![DSH Market](https://raw.githubusercontent.com/2BingLing/dsh-market/master/assets/readme/badge-listed-en.svg)](https://dsh.market/)
+
 `dsh-fmea-table-check` 读取一份 FMEA 分析表——以表自身的列名为键，中英文均可——核对一张表在机械层面能够被要求的东西：基本分析链是否记录在案、严重度/频度/探测度是否为可运算的数值、风险顺序数是否等于三者之积、高风险条目是否有带责任人与完成期限的建议措施、措施状态是否取自本机构的口径、失效模式栏是否残留未替换的模板占位符。
+
+## 实际输出长什么样
+
+![Terminal demo of dsh-fmea-table-check: real output over its FM-002 fixture](https://raw.githubusercontent.com/PerryLink/dsh-fmea-table-check/main/docs/assets/dsh-fmea-table-check-demo.png)
+
+本插件对自己 `FM-002` 测试夹具的**真实输出**，不是示意图。规则库不伪造引文，因此每条发现都会同时写明所引条款，以及该条款原文本次未取得。
 
 ## 它回答什么问题
 

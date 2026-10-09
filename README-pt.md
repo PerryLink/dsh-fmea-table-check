@@ -1,6 +1,14 @@
 # dsh-fmea-table-check — Verificação da completude dos elementos da folha de FMEA e da consistência do número de prioridade de risco
 
+[![DSH Market](https://raw.githubusercontent.com/2BingLing/dsh-market/master/assets/readme/badge-listed-en.svg)](https://dsh.market/)
+
 `dsh-fmea-table-check` lê uma folha de FMEA —linhas indexadas pelos próprios nomes de coluna da folha, em chinês ou em inglês— e verifica nela o que a uma folha se pode exigir mecanicamente: que a cadeia de análise esteja registada, que as pontuações de severidade, ocorrência e deteção sejam números operáveis, que o número de prioridade de risco seja igual ao seu produto, que uma linha de risco elevado traga uma ação com responsável e prazo, que os estados das ações venham do seu próprio vocabulário e que não sobreviva nenhum marcador de modelo no modo de falha.
+
+## Como é a saída
+
+![Terminal demo of dsh-fmea-table-check: real output over its FM-002 fixture](https://raw.githubusercontent.com/PerryLink/dsh-fmea-table-check/main/docs/assets/dsh-fmea-table-check-demo.png)
+
+Saída real deste plugin sobre o seu próprio fixture de teste `FM-002` — não é uma simulação. O pacote de regras não inventa citações, por isso cada achado nomeia a cláusula aplicada e avisa que o seu texto não foi obtido.
 
 ## O que ele responde
 
