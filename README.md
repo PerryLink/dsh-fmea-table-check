@@ -4,6 +4,13 @@
 
 `dsh-fmea-table-check` reads one FMEA worksheet — rows keyed by the sheet's own column names, in Chinese or English — and checks in it what a sheet can be held to mechanically: that the analysis chain is recorded, that the severity, occurrence and detection scores are operable numbers, that the risk priority number equals their product, that a high-risk row carries an action with an owner and a due date, that action statuses come from your own vocabulary, and that no template placeholder survives in the failure mode.
 
+## Install
+
+```sh
+dsh plugin --profile <name> add dsh-fmea-table-check
+dsh --profile <name> --dump-config | grep 'dsh-fmea-table-check'
+```
+
 ## What it looks like
 
 ![Terminal demo of dsh-fmea-table-check: real output over its FM-002 fixture](https://raw.githubusercontent.com/PerryLink/dsh-fmea-table-check/main/docs/assets/dsh-fmea-table-check-hero.png)
@@ -76,13 +83,6 @@ in Chinese or English — applies a versioned rule pack, and returns a report.
 | `FM-006` | the action status comes from your vocabulary (off by default) | info | local |
 | `FM-007` | the sheet names its analysis subject | warn | principle |
 | `FM-008` | no template placeholder survives in the failure mode | warn | principle |
-
-## Install
-
-```sh
-dsh plugin --profile <name> add dsh-fmea-table-check
-dsh --profile <name> --dump-config | grep 'dsh-fmea-table-check'
-```
 
 ## Configuration
 

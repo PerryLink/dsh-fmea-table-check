@@ -4,6 +4,13 @@
 
 `dsh-fmea-table-check` 读取一份 FMEA 分析表——以表自身的列名为键，中英文均可——核对一张表在机械层面能够被要求的东西：基本分析链是否记录在案、严重度/频度/探测度是否为可运算的数值、风险顺序数是否等于三者之积、高风险条目是否有带责任人与完成期限的建议措施、措施状态是否取自本机构的口径、失效模式栏是否残留未替换的模板占位符。
 
+## Install
+
+```sh
+dsh plugin --profile <name> add dsh-fmea-table-check
+dsh --profile <name> --dump-config | grep 'dsh-fmea-table-check'
+```
+
 ## 实际输出长什么样
 
 ![Terminal demo of dsh-fmea-table-check: real output over its FM-002 fixture](https://raw.githubusercontent.com/PerryLink/dsh-fmea-table-check/main/docs/assets/dsh-fmea-table-check-hero.png)
@@ -64,13 +71,6 @@ and they are where FMEA's value lies.**
 ## What it does
 
 规则表、字段说明与行为细节见 [README.md](README.md#what-it-does)（英文主版本）。本插件只列出材料与所引条款之间的字面差异，并对无法执行的检查在 `skipped` 中逐项说明。
-
-## Install
-
-```sh
-dsh plugin --profile <name> add dsh-fmea-table-check
-dsh --profile <name> --dump-config | grep 'dsh-fmea-table-check'
-```
 
 ## Configuration
 

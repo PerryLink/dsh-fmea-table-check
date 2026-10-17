@@ -4,6 +4,13 @@
 
 `dsh-fmea-table-check` lê uma folha de FMEA —linhas indexadas pelos próprios nomes de coluna da folha, em chinês ou em inglês— e verifica nela o que a uma folha se pode exigir mecanicamente: que a cadeia de análise esteja registada, que as pontuações de severidade, ocorrência e deteção sejam números operáveis, que o número de prioridade de risco seja igual ao seu produto, que uma linha de risco elevado traga uma ação com responsável e prazo, que os estados das ações venham do seu próprio vocabulário e que não sobreviva nenhum marcador de modelo no modo de falha.
 
+## Install
+
+```sh
+dsh plugin --profile <name> add dsh-fmea-table-check
+dsh --profile <name> --dump-config | grep 'dsh-fmea-table-check'
+```
+
 ## Como é a saída
 
 ![Terminal demo of dsh-fmea-table-check: real output over its FM-002 fixture](https://raw.githubusercontent.com/PerryLink/dsh-fmea-table-check/main/docs/assets/dsh-fmea-table-check-hero.png)
@@ -64,13 +71,6 @@ and they are where FMEA's value lies.**
 ## What it does
 
 A tabela de regras, os campos e o comportamento detalhado estão em [README.md](README.md#what-it-does) (versão principal em inglês). O plugin apenas lista divergências literais frente às cláusulas citadas e indica em `skipped` cada verificação que não pôde ser executada.
-
-## Install
-
-```sh
-dsh plugin --profile <name> add dsh-fmea-table-check
-dsh --profile <name> --dump-config | grep 'dsh-fmea-table-check'
-```
 
 ## Configuration
 
