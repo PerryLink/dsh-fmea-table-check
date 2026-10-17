@@ -1,0 +1,14 @@
+[
+  {
+    "path": "docs/assets/dsh-fmea-table-check-hero.png",
+    "kind": "hero",
+    "alt": "dsh-fmea-table-check terminal output",
+    "caption": "Real dsh-fmea-table-check checker output; 31 tests passed."
+  },
+  {
+    "path": "docs/assets/dsh-fmea-table-check-demo.gif",
+    "kind": "demo",
+    "alt": "Animated dsh-fmea-table-check terminal session",
+    "caption": "The same run, assembled line by line."
+  }
+]

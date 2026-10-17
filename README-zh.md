@@ -6,7 +6,9 @@
 
 ## 实际输出长什么样
 
-![Terminal demo of dsh-fmea-table-check: real output over its FM-002 fixture](https://raw.githubusercontent.com/PerryLink/dsh-fmea-table-check/main/docs/assets/dsh-fmea-table-check-demo.png)
+![Terminal demo of dsh-fmea-table-check: real output over its FM-002 fixture](https://raw.githubusercontent.com/PerryLink/dsh-fmea-table-check/main/docs/assets/dsh-fmea-table-check-hero.png)
+
+![Animated terminal demo of dsh-fmea-table-check](https://raw.githubusercontent.com/PerryLink/dsh-fmea-table-check/main/docs/assets/dsh-fmea-table-check-demo.gif)
 
 本插件对自己 `FM-002` 测试夹具的**真实输出**，不是示意图。规则库不伪造引文，因此每条发现都会同时写明所引条款，以及该条款原文本次未取得。
 
