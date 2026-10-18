@@ -1,5 +1,7 @@
 # dsh-fmea-table-check — FMEA 分析表要素齐备性与风险顺序数一致性核对
 
+[English](README.md) · [简体中文](README-zh.md) · [Español](README-es.md) · [Português](README-pt.md) · [हिन्दी](README-hi.md)
+
 [![DSH Market](https://raw.githubusercontent.com/2BingLing/dsh-market/master/assets/readme/badge-listed-en.svg)](https://dsh.market/)
 
 `dsh-fmea-table-check` 读取一份 FMEA 分析表——以表自身的列名为键，中英文均可——核对一张表在机械层面能够被要求的东西：基本分析链是否记录在案、严重度/频度/探测度是否为可运算的数值、风险顺序数是否等于三者之积、高风险条目是否有带责任人与完成期限的建议措施、措施状态是否取自本机构的口径、失效模式栏是否残留未替换的模板占位符。
