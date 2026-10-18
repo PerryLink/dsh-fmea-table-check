@@ -38,13 +38,7 @@ dsh --profile <name> --dump-config | grep 'dsh-fmea-table-check'
 |---|---|---|
 | 《系统可靠性分析技术 失效模式和影响分析（FMEA）程序》 | GB/T 7826（现行版本号与条号本次未核实） | FM-001, FM-002, FM-003, FM-004, FM-005, FM-006, FM-007, FM-008 |
 
-**Boundary:** this plugin checks an **FMEA worksheet** for what a sheet can be held to mechanically — that
-the analysis chain is recorded, that the severity / occurrence / detection scores are operable numbers,
-that the risk priority number equals their product, that a high-risk row carries an action with an owner and
-a due date, that action statuses come from your vocabulary, and that no template placeholder survives. It
-does **not** judge whether the failure modes are complete, whether the consequences are analysed far enough,
-whether the scores are right, or whether the risk is acceptable. **Those are the study team's judgements,
-and they are where FMEA's value lies.**
+**边界（中文译文，以英文原文为准）：** 本插件核对一份 **FMEA 分析表** 在表格层面可以机械要求到的事项——分析链是否记录在案，严重度 / 频度 / 探测度是否为可运算的数值，风险顺序数是否等于三者之积，高风险条目是否带有含责任人与完成期限的建议措施，措施状态是否取自你配置的取值口径，以及是否残留模板占位符。它**不**判定失效模式是否完整、后果分析是否足够深入、评分是否正确，也不判定风险是否可以接受。**那些是研究团队的判断，也正是 FMEA 的价值所在。**
 
 > ### ⚠️ Read this before trusting a citation in the report
 >
