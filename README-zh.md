@@ -40,20 +40,11 @@ dsh --profile <name> --dump-config | grep 'dsh-fmea-table-check'
 
 **边界（中文译文，以英文原文为准）：** 本插件核对一份 **FMEA 分析表** 在表格层面可以机械要求到的事项——分析链是否记录在案，严重度 / 频度 / 探测度是否为可运算的数值，风险顺序数是否等于三者之积，高风险条目是否带有含责任人与完成期限的建议措施，措施状态是否取自你配置的取值口径，以及是否残留模板占位符。它**不**判定失效模式是否完整、后果分析是否足够深入、评分是否正确，也不判定风险是否可以接受。**那些是研究团队的判断，也正是 FMEA 的价值所在。**
 
-> ### ⚠️ Read this before trusting a citation in the report
+> ### ⚠️ 在采信报告中的引文之前，请先读这一节（以英文原文为准）
 >
-> **Every `excerpt` in this plugin's rule pack says, in so many words, that the clause text was not
-> obtained.** The method's homes are **GB/T 7826《系统可靠性分析技术 失效模式和影响分析（FMEA）程序》**,
-> IEC 60812, and the automotive AIAG-VDA handbook. The verification pass could not retrieve verbatim clause
-> text from them, so rather than paraphrase a quotation the pack states the gap in the `excerpt` field
-> itself and puts the honest reasoning in `note`. Every rule is therefore `warn` or `info`, and a test
-> asserts that no rule claims a quotation it does not have. **When the texts are in hand, two things must be
-> done: replace each `excerpt` with the real clause, and raise `kind` to `direct`.**
+> **本插件规则库中的每一条 `excerpt` 都明确写着：本次未取得条款原文。** 该方法主要见于 **GB/T 7826《系统可靠性分析技术 失效模式和影响分析（FMEA）程序》**、IEC 60812 以及汽车行业的 AIAG-VDA 手册。核验过程无法从这些文件中取得逐字条款原文，因此规则库没有转述引文，而是把这一缺口写在 `excerpt` 字段本身，并把诚实的理由写进 `note`。因此每条规则都是 `warn` 或 `info`，并有测试断言：没有任何一条规则声称拥有一条它并不拥有的引文。**拿到原文后，必须做两件事：把每条 `excerpt` 替换为真实条款，并把 `kind` 提升为 `direct`。**
 >
-> Two settings are yours. **FM-003's RPN arithmetic assumes the S×O×D method**; a worksheet built on the
-> AIAG-VDA handbook uses **AP (action priority)** instead, so repoint `resultField` and `factorFields` — or
-> disable the rule. And **FM-004's threshold ships as `0`, meaning "not configured"**: what counts as high
-> risk is your risk criterion, and the rule reports that it could not run rather than inventing a number.
+> 有两项设置由你决定。**FM-003 的风险顺序数算术假定采用 S×O×D 方法**；依据 AIAG-VDA 手册建立的工作表改用 **AP（action priority）**，因此请重新指向 `resultField` 和 `factorFields`——或停用该规则。另外，**FM-004 的阈值出厂为 `0`，含义是“未配置”**：什么算高风险取决于你的风险准则，该规则会报告自己无法运行，而不是编造一个数字。
 
 ## Compatibility
 
