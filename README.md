@@ -15,13 +15,17 @@ dsh --profile <name> --dump-config | grep 'dsh-fmea-table-check'
 
 ## What it looks like
 
-![Terminal demo of dsh-fmea-table-check: real output over its FM-002 fixture](https://raw.githubusercontent.com/PerryLink/dsh-fmea-table-check/main/docs/assets/dsh-fmea-table-check-hero.png)
+![Workflow diagram for dsh-fmea-table-check: document → rule pack → findings.](docs/assets/dsh-fmea-table-check-flow.svg)
 
-![Animated terminal demo of dsh-fmea-table-check](https://raw.githubusercontent.com/PerryLink/dsh-fmea-table-check/main/docs/assets/dsh-fmea-table-check-demo.gif)
+*Workflow overview: document → rule pack → findings. The examples below use the real command surface.*
 
-Real output from this plugin over its own `FM-002` test fixture — not a mock-up. The rule pack ships no invented quotations, so a finding names both the clause it applied and the fact that the clause text was not obtained.
+
 
 ## What it answers
+
+### Examples
+
+The table below is the example set: the first row is the detailed walkthrough, the remaining rows are short cases.
 
 | You ask | What it answers |
 |---|---|
