@@ -28,6 +28,35 @@ dsh --profile <name> --dump-config | grep 'dsh-fmea-table-check'
 
 The table below is the example set: the first row is the detailed walkthrough, the remaining rows are short cases.
 
+#### Detailed output
+
+**Tool** `fmea_table_check`
+
+**Input**
+
+~~~json
+{"rows":[{"失效模式":"密封面泄漏","严重度":"8","频度":"4","探测度":"3","风险优先数":"100"}]}
+~~~
+ 
+**Output**
+
+~~~json
+{
+  "id": "dsh-fmea-table-check.FM-003.de09b5a6",
+  "ruleId": "FM-003",
+  "severity": "warn",
+  "locator": {
+    "field": "rpn",
+    "row": 1
+  },
+  "found": "第 1 行「rpn」填报 100，而 8 × 4 × 3 = 96",
+  "expected": "「rpn」应等于 severity × occurrence × detection",
+  "fix": "核对是否抄错或漏改；本条只做算术核对，不判断各因子是否正确"
+}
+~~~
+
+*Observed from `tests/fixtures/FM-003/FM-003-unsafe.json (cases.json expects FM-003 count 1); run via lib/index.mjs rules/fmea-table-check.yaml`*
+
 | You ask | What it answers |
 |---|---|
 | The RPN cell does not equal severity × occurrence × detection — is that caught? | Yes. `FM-003` recomputes `rpn` from severity × occurrence × detection with a tolerance of `0` and reports the row whose stored value differs. It runs only when all four cells hold parseable numbers; if the occurrence score is not a number the rule reports `skipped` rather than a pass. A worksheet built on the AIAG-VDA handbook scores with AP instead of RPN, so repoint `resultField` and `factorFields`, or disable the rule. |

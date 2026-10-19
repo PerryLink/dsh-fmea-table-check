@@ -30,6 +30,35 @@ dsh --profile <name> --dump-config | grep 'dsh-fmea-table-check'
 नीचे दी गई तालिका उदाहरण-समुच्चय है: पहली पंक्ति विस्तृत केस है, बाकी संक्षिप्त केस हैं।
 
 
+#### विस्तृत आउटपुट
+
+**उपकरण** `fmea_table_check`
+
+**इनपुट**
+
+~~~json
+{"rows":[{"失效模式":"密封面泄漏","严重度":"8","频度":"4","探测度":"3","风险优先数":"100"}]}
+~~~
+ 
+**आउटपुट**
+
+~~~json
+{
+  "id": "dsh-fmea-table-check.FM-003.de09b5a6",
+  "ruleId": "FM-003",
+  "severity": "warn",
+  "locator": {
+    "field": "rpn",
+    "row": 1
+  },
+  "found": "第 1 行「rpn」填报 100，而 8 × 4 × 3 = 96",
+  "expected": "「rpn」应等于 severity × occurrence × detection",
+  "fix": "核对是否抄错或漏改；本条只做算术核对，不判断各因子是否正确"
+}
+~~~
+
+*स्रोत `tests/fixtures/FM-003/FM-003-unsafe.json (cases.json expects FM-003 count 1); run via lib/index.mjs rules/fmea-table-check.yaml`*
+
 | आपका सवाल | इसका जवाब |
 |---|---|
 | `rpn` का मान severity × occurrence × detection के बराबर नहीं है — क्या यह पकड़ में आता है? | हाँ। `FM-003` severity × occurrence × detection से `rpn` दोबारा निकालता है, सहनशीलता `0`, और जिस पंक्ति का दर्ज मान उससे भिन्न हो उसे दर्ज करता है। यह तभी चलता है जब चारों खानों में पढ़ने योग्य संख्याएँ हों; occurrence का अंक संख्या न हो तो यह नियम पास होने के बजाय `skipped` बताता है। AIAG-VDA पुस्तिका पर बनी शीट RPN के बजाय AP से अंक देती है: `resultField` और `factorFields` बदलें, या यह नियम बंद कर दें। |

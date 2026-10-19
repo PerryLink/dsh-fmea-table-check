@@ -30,6 +30,35 @@ dsh --profile <name> --dump-config | grep 'dsh-fmea-table-check'
 下表是示例集：第一行是详细走查，其余行是简短案例。
 
 
+#### 详细输出
+
+**工具** `fmea_table_check`
+
+**输入**
+
+~~~json
+{"rows":[{"失效模式":"密封面泄漏","严重度":"8","频度":"4","探测度":"3","风险优先数":"100"}]}
+~~~
+ 
+**输出**
+
+~~~json
+{
+  "id": "dsh-fmea-table-check.FM-003.de09b5a6",
+  "ruleId": "FM-003",
+  "severity": "warn",
+  "locator": {
+    "field": "rpn",
+    "row": 1
+  },
+  "found": "第 1 行「rpn」填报 100，而 8 × 4 × 3 = 96",
+  "expected": "「rpn」应等于 severity × occurrence × detection",
+  "fix": "核对是否抄错或漏改；本条只做算术核对，不判断各因子是否正确"
+}
+~~~
+
+*来源 `tests/fixtures/FM-003/FM-003-unsafe.json (cases.json expects FM-003 count 1); run via lib/index.mjs rules/fmea-table-check.yaml`*
+
 | 你会问 | 它怎么答 |
 |---|---|
 | RPN 栏跟严重度 × 频度 × 探测度对不上，能查出来吗？ | 能。`FM-003` 用严重度 × 频度 × 探测度重算 `rpn`，容差为 `0`，逐行报出与表内所填不一致的条目。它只在四个字段都能解析为数值时执行；频度填的不是数字时，本条报 `skipped` 而不是通过。按 AIAG-VDA 手册打分的表用 AP 而非 RPN，请改 `resultField` 与 `factorFields`，或停用本条。 |

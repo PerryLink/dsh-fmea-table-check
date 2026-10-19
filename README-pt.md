@@ -30,6 +30,35 @@ Saída real deste plugin sobre o seu próprio fixture de teste `FM-002` — não
 A tabela abaixo é o conjunto de exemplos: a primeira linha é o caso detalhado e as demais são casos curtos.
 
 
+#### Saída detalhada
+
+**Ferramenta** `fmea_table_check`
+
+**Entrada**
+
+~~~json
+{"rows":[{"失效模式":"密封面泄漏","严重度":"8","频度":"4","探测度":"3","风险优先数":"100"}]}
+~~~
+ 
+**Saída**
+
+~~~json
+{
+  "id": "dsh-fmea-table-check.FM-003.de09b5a6",
+  "ruleId": "FM-003",
+  "severity": "warn",
+  "locator": {
+    "field": "rpn",
+    "row": 1
+  },
+  "found": "第 1 行「rpn」填报 100，而 8 × 4 × 3 = 96",
+  "expected": "「rpn」应等于 severity × occurrence × detection",
+  "fix": "核对是否抄错或漏改；本条只做算术核对，不判断各因子是否正确"
+}
+~~~
+
+*Observado em `tests/fixtures/FM-003/FM-003-unsafe.json (cases.json expects FM-003 count 1); run via lib/index.mjs rules/fmea-table-check.yaml`*
+
 | Você pergunta | O que ele responde |
 |---|---|
 | A célula do RPN não coincide com severidade × ocorrência × deteção — isso é detetado? | Sim. `FM-003` recalcula `rpn` como severidade × ocorrência × deteção com tolerância `0` e assinala a linha cujo valor registado difere. Só é executada quando as quatro células têm números analisáveis; se a pontuação de ocorrência não for um número, a regra reporta `skipped` em vez de passar. Uma folha pontuada pelo manual AIAG-VDA usa AP em vez de RPN: reaponte `resultField` e `factorFields`, ou desative a regra. |
