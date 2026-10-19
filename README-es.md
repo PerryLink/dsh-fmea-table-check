@@ -3,6 +3,7 @@
 [English](README.md) · [简体中文](README-zh.md) · [Español](README-es.md) · [Português](README-pt.md) · [हिन्दी](README-hi.md)
 
 [![DSH Market](https://raw.githubusercontent.com/2BingLing/dsh-market/master/assets/readme/badge-listed-en.svg)](https://dsh.market/)
+[![dshfind](https://dshfind.com/api/badge/PerryLink/dsh-fmea-table-check?metric=downloads)](https://dshfind.com/en/plugins/PerryLink/dsh-fmea-table-check?ref=badge)
 
 `dsh-fmea-table-check` lee una hoja de FMEA —filas indexadas por los propios nombres de columna de la hoja, en chino o en inglés— y comprueba en ella lo que a una hoja se le puede exigir mecánicamente: que la cadena de análisis esté registrada, que las puntuaciones de severidad, ocurrencia y detección sean números operables, que el número de prioridad de riesgo sea igual a su producto, que una fila de riesgo alto lleve una acción con responsable y fecha límite, que los estados de las acciones procedan de su propio vocabulario y que no sobreviva ningún marcador de plantilla en el modo de fallo.
 

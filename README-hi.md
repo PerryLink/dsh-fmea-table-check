@@ -3,6 +3,7 @@
 [English](README.md) · [简体中文](README-zh.md) · [Español](README-es.md) · [Português](README-pt.md) · [हिन्दी](README-hi.md)
 
 [![DSH Market](https://raw.githubusercontent.com/2BingLing/dsh-market/master/assets/readme/badge-listed-en.svg)](https://dsh.market/)
+[![dshfind](https://dshfind.com/api/badge/PerryLink/dsh-fmea-table-check?metric=downloads)](https://dshfind.com/en/plugins/PerryLink/dsh-fmea-table-check?ref=badge)
 
 `dsh-fmea-table-check` एक FMEA कार्यपत्रक पढ़ता है — पंक्तियाँ शीट के अपने स्तंभ-नामों से जुड़ी, चीनी या अंग्रेज़ी में — और उसमें वह जाँचता है जो एक शीट से यांत्रिक रूप से अपेक्षित किया जा सकता है: क्या विश्लेषण-शृंखला दर्ज है, क्या `severity`, `occurrence` और `detection` के अंक संक्रियात्मक संख्याएँ हैं, क्या `rpn` उनके गुणनफल के बराबर है, क्या ऊँचे जोखिम वाली पंक्ति में ज़िम्मेदार और समय-सीमा सहित सुझाई गई कार्रवाई है, क्या कार्रवाई की स्थितियाँ आपकी अपनी शब्दावली से आती हैं, और क्या विफलता-प्रकार स्तंभ में कोई टेम्पलेट प्लेसहोल्डर शेष नहीं है।
 

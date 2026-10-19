@@ -3,6 +3,7 @@
 [English](README.md) · [简体中文](README-zh.md) · [Español](README-es.md) · [Português](README-pt.md) · [हिन्दी](README-hi.md)
 
 [![DSH Market](https://raw.githubusercontent.com/2BingLing/dsh-market/master/assets/readme/badge-listed-en.svg)](https://dsh.market/)
+[![dshfind](https://dshfind.com/api/badge/PerryLink/dsh-fmea-table-check?metric=downloads)](https://dshfind.com/en/plugins/PerryLink/dsh-fmea-table-check?ref=badge)
 
 `dsh-fmea-table-check` reads one FMEA worksheet — rows keyed by the sheet's own column names, in Chinese or English — and checks in it what a sheet can be held to mechanically: that the analysis chain is recorded, that the severity, occurrence and detection scores are operable numbers, that the risk priority number equals their product, that a high-risk row carries an action with an owner and a due date, that action statuses come from your own vocabulary, and that no template placeholder survives in the failure mode.
 
