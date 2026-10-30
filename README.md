@@ -91,18 +91,9 @@ and they are where FMEA's value lies.**
 
 > ### ⚠️ Read this before trusting a citation in the report
 >
-> **Every `excerpt` in this plugin's rule pack says, in so many words, that the clause text was not
-> obtained.** The method's homes are **GB/T 7826《系统可靠性分析技术 失效模式和影响分析（FMEA）程序》**,
-> IEC 60812, and the automotive AIAG-VDA handbook. The verification pass could not retrieve verbatim clause
-> text from them, so rather than paraphrase a quotation the pack states the gap in the `excerpt` field
-> itself and puts the honest reasoning in `note`. Every rule is therefore `warn` or `info`, and a test
-> asserts that no rule claims a quotation it does not have. **When the texts are in hand, two things must be
-> done: replace each `excerpt` with the real clause, and raise `kind` to `direct`.**
+> **`excerpt` status is per rule, not uniform.** Some rules quote the clause verbatim (`kind: direct`), some are derived from the principle of the cited articles (`kind: derived-from-principle`, capped at `warn`), and some use thresholds your institution configures (`kind: institutional-configuration`, capped at `info`). The pack never paraphrases a quotation: when the text was not obtained, the `excerpt` field says so and the reasoning lives in `note`; a test asserts that no rule claims a quotation it does not have. **For any rule still marked as not obtained, replace the `excerpt` with the real clause and raise `kind` to `direct` once the text is in hand.**
 >
-> Two settings are yours. **FM-003's RPN arithmetic assumes the S×O×D method**; a worksheet built on the
-> AIAG-VDA handbook uses **AP (action priority)** instead, so repoint `resultField` and `factorFields` — or
-> disable the rule. And **FM-004's threshold ships as `0`, meaning "not configured"**: what counts as high
-> risk is your risk criterion, and the rule reports that it could not run rather than inventing a number.
+> The conclusion is the reviewer's: this plugin lists differences it can point to in the material and does not decide facts or compliance.
 
 ## Compatibility
 
