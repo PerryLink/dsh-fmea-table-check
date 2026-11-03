@@ -1,6 +1,6 @@
 # dsh-fmea-table-check — FMEA 分析表要素齐备性与风险顺序数一致性核对
 
-## 快速试跑（1 分钟）
+### 快速试跑（1 分钟）
 
 ```bash
 node samples/quickstart/run.mjs --check
