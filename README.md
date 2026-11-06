@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-fmea-table-check-flow-dark.svg">
-  <img src="docs/assets/dsh-fmea-table-check-flow-light.svg" width="100%" alt="dsh-fmea-table-check 数据流：FMEA 分析表（JSON/YAML）→ 规则包 rules/fmea-table-check.yaml → fmea_table_check 工具 → 报告（issueCount / skipped）">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-fmea-table-check-hero-zh-dark.webp">
+  <img src="docs/assets/dsh-fmea-table-check-hero-zh-light.webp" width="100%" alt="dsh-fmea-table-check 横幅：左侧是插件名、两行价值说明与页脚；右侧①第 1 行的 RPN 算术——严重度 8 × 频度 4 × 探测度 3 = 96，而表内填报 100，容差 0，差 4；②八条规则本次状态（FM-003 差异、FM-004 与 FM-006 未配置、其余无差异）；③两条输出通道——issues 带行号与栏名，skipped 逐条写明原因，空 issues 不等于没问题">
 </picture>
 
 # dsh-fmea-table-check
@@ -39,6 +39,11 @@ dsh plugin --profile <name> add dsh-fmea-table-check
 `dsh-fmea-table-check` 读取一份 FMEA 分析表——行以表自身的列名为键，中文或英文均可——核对一张表在机械层面能够被要求的东西：基本分析链是否记录在案、严重度/频度/探测度是否为可运算的数值、风险顺序数（RPN）是否等于三者之积、高风险条目是否带有含责任人与完成期限的建议措施、措施状态是否取自你配置的口径、失效模式栏是否残留模板占位符。
 
 它把这些逐条变成「哪一行、哪一栏、差什么」的差异清单，并按严重级汇总；算不出来的检查写进 `skipped`，绝不静默通过。
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-fmea-table-check-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-fmea-table-check-flow-v5-light.svg" width="100%" alt="dsh-fmea-table-check 结构图：材料（file 或 material，JSON/YAML）与规则包（rules/fmea-table-check.yaml，8 条规则）共同进入四条并行读取面——表头（FM-007）、分析链（FM-001、FM-008）、评分（FM-002、FM-003）、措施（FM-004、FM-005、FM-006），每条规则标出引擎的执行类型与本次状态；底部两条输出通道：issues 带 locator（行/字段）、found、expected、fix 与依据，skipped 逐条写明规则与原因，再由 buildView 投影为 markdown、reportJson 与 issueCount/skippedCount">
+</picture>
 
 它不判断失效模式是否找全、后果是否分析到位、打分是否恰当、风险是否可接受——那些是分析小组的判断，也正是 FMEA 的价值所在。
 
@@ -349,9 +354,9 @@ pnpm pack
 | `tests/` | vitest；`fixtures/FM-00N/` 为每条规则的合规 / 违规成对夹具 |
 | `samples/quickstart/` | 1 分钟试跑样例（输入、期望输出与 `run.mjs`） |
 | `scripts/` | 机械门禁（`check-citations`、`check-lockfile-drift`、`check-readme-sync`、`verify-self-contained`）与配图脚本 `gen-readme-assets.py` |
-| `docs/assets/` | README 配图；`dsh-fmea-table-check-flow-{light,dark}.svg` 由配图脚本生成 |
+| `docs/assets/` | README 配图；`dsh-fmea-table-check-hero-{zh,en}-{light,dark}.webp` 与 `dsh-fmea-table-check-flow-v5-{light,dark}.svg` 由配图脚本生成 |
 
-配图由 [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) 程序化生成（Python + Pillow），可重复执行：`python scripts/gen-readme-assets.py`。
+配图由 [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) 程序化生成（Pillow 画本地化 hero、手写 SVG 画结构图），可重复执行：`python scripts/gen-readme-assets.py`。
 
 Topics：`dsh`, `dsh-plugin`, `deepseek-harness`, `deepseek`, `cordis`, `fmea`, `table`
 

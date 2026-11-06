@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-fmea-table-check-flow-dark.svg">
-  <img src="docs/assets/dsh-fmea-table-check-flow-light.svg" width="100%" alt="dsh-fmea-table-check डेटा प्रवाह: FMEA कार्यपत्रक (JSON/YAML) → नियम-पैक rules/fmea-table-check.yaml → fmea_table_check टूल → रिपोर्ट (issueCount / skipped)">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-fmea-table-check-hero-en-dark.webp">
+  <img src="docs/assets/dsh-fmea-table-check-hero-en-light.webp" width="100%" alt="dsh-fmea-table-check बैनर: बाईं ओर प्लगइन का नाम, दो मूल्य-पंक्तियाँ और फ़ुटर; दाईं ओर (1) पंक्ति 1 का RPN गणित — गंभीरता 8 × आवृत्ति 4 × पहचान 3 = 96, जबकि शीट में 100, सहनशीलता 0, अंतर 4; (2) इस रन में आठ नियमों की स्थिति (FM-003 अंतर, FM-004 और FM-006 अनसेट, शेष स्वच्छ); (3) दो आउटपुट चैनल — issues में पंक्ति और स्तंभ, skipped में कारण, और खाली issues का अर्थ 'सब ठीक' नहीं">
 </picture>
 
 # dsh-fmea-table-check
@@ -39,6 +39,11 @@ dsh plugin --profile <name> add dsh-fmea-table-check
 `dsh-fmea-table-check` एक FMEA कार्यपत्रक पढ़ता है — पंक्तियाँ शीट के अपने स्तंभ-नामों से जुड़ी, चीनी या अंग्रेज़ी में — और उसमें वह जाँचता है जो एक शीट से यांत्रिक रूप से अपेक्षित किया जा सकता है: क्या विश्लेषण-शृंखला दर्ज है, क्या `severity`, `occurrence` और `detection` संक्रियात्मक संख्याएँ हैं, क्या जोखिम प्राथमिकता संख्या (RPN) उनके गुणनफल के बराबर है, क्या ऊँचे जोखिम वाली पंक्ति में ज़िम्मेदार और समय-सीमा सहित सुझाई गई कार्रवाई है, क्या कार्रवाई की स्थितियाँ आपकी कॉन्फ़िगर की गई शब्दावली से आती हैं, और क्या विफलता-प्रकार स्तंभ में कोई टेम्पलेट प्लेसहोल्डर शेष नहीं है।
 
 यह इन जाँचों को पंक्ति-दर-पंक्ति उस सूची में बदलता है जिसमें लिखा होता है कि क्या अलग है और कहाँ, गंभीरता के अनुसार सारांशित; जो जाँच नहीं चल सकती वह `skipped` में बताई जाती है और कभी चुपचाप पास नहीं होती।
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-fmea-table-check-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-fmea-table-check-flow-v5-light.svg" width="100%" alt="dsh-fmea-table-check संरचना: सामग्री (file या material, JSON/YAML) और नियम-पैक (rules/fmea-table-check.yaml, आठ नियम) चार समानांतर पठन-सतहों में जाते हैं — शीर्षक (FM-007), विश्लेषण-शृंखला (FM-001, FM-008), अंक (FM-002, FM-003) और कार्रवाई (FM-004, FM-005, FM-006); प्रत्येक नियम के साथ इंजन का जाँच-प्रकार और इस रन की स्थिति; नीचे दो आउटलेट issues (locator पंक्ति/फ़ील्ड, found, expected, fix, basis) को skipped (नियम + कारण) से अलग रखते हैं, और buildView उन्हें markdown, reportJson और गणनाओं में बदलता है">
+</picture>
 
 यह नहीं आँकता कि विफलता-प्रकार पूरे हैं या नहीं, परिणाम पर्याप्त विश्लेषित हैं या नहीं, अंक सही हैं या नहीं, या जोखिम स्वीकार्य है या नहीं — वे अध्ययन दल के निर्णय हैं, और FMEA का मूल्य वहीं है।
 
@@ -349,9 +354,9 @@ pnpm pack
 | `tests/` | vitest; `fixtures/FM-00N/` में प्रति नियम अनुरूप / उल्लंघनकारी फ़िक्स्चर जोड़ी |
 | `samples/quickstart/` | एक-मिनट का नमूना (इनपुट, अपेक्षित आउटपुट और `run.mjs`) |
 | `scripts/` | यांत्रिक गेट (`check-citations`, `check-lockfile-drift`, `check-readme-sync`, `verify-self-contained`) और छवि जनरेटर `gen-readme-assets.py` |
-| `docs/assets/` | README छवियाँ; `dsh-fmea-table-check-flow-{light,dark}.svg` एसेट स्क्रिप्ट से बनती हैं |
+| `docs/assets/` | README छवियाँ; `dsh-fmea-table-check-hero-{zh,en}-{light,dark}.webp` और `dsh-fmea-table-check-flow-v5-{light,dark}.svg` एसेट स्क्रिप्ट से बनती हैं |
 
-README की छवियाँ [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Python + Pillow) से प्रोग्रामेटिक रूप में बनती हैं और सुरक्षित रूप से दोबारा चलाई जा सकती हैं: `python scripts/gen-readme-assets.py`.
+README की छवियाँ [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (स्थानीयकृत हीरो के लिए Pillow, संरचना-आरेख के लिए हाथ से लिखा SVG) से प्रोग्रामेटिक रूप में बनती हैं और सुरक्षित रूप से दोबारा चलाई जा सकती हैं: `python scripts/gen-readme-assets.py`.
 
 Topics: `dsh`, `dsh-plugin`, `deepseek-harness`, `deepseek`, `cordis`, `fmea`, `table`
 

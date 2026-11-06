@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-fmea-table-check-flow-dark.svg">
-  <img src="docs/assets/dsh-fmea-table-check-flow-light.svg" width="100%" alt="Fluxo de dados do dsh-fmea-table-check: folha de FMEA (JSON/YAML) → pacote de regras rules/fmea-table-check.yaml → ferramenta fmea_table_check → relatório (issueCount / skipped)">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-fmea-table-check-hero-en-dark.webp">
+  <img src="docs/assets/dsh-fmea-table-check-hero-en-light.webp" width="100%" alt="Banner do dsh-fmea-table-check: à esquerda, o nome, duas linhas de valor e o rodapé; à direita (1) a aritmética do RPN da linha 1 — severidade 8 × ocorrência 4 × deteção 3 = 96 contra os 100 da folha, tolerância 0, diferença 4; (2) o estado das oito regras nesta execução (FM-003 diferença, FM-004 e FM-006 não configuradas, as restantes sem diferença); (3) dois canais de saída — issues com linha e campo, skipped com o motivo, e uma lista de diferenças vazia não é uma aprovação">
 </picture>
 
 # dsh-fmea-table-check
@@ -39,6 +39,11 @@ dsh plugin --profile <name> add dsh-fmea-table-check
 `dsh-fmea-table-check` lê uma folha de FMEA —linhas indexadas pelos próprios nomes de coluna da folha, em chinês ou em inglês— e verifica o que a uma folha se pode exigir mecanicamente: que a cadeia de análise esteja registada, que severidade, ocorrência e deteção sejam números operáveis, que o número de prioridade de risco (RPN) seja igual ao seu produto, que uma linha de risco elevado traga uma ação com responsável e prazo, que os estados das ações venham do vocabulário que configurar e que não sobreviva nenhum marcador de modelo na coluna do modo de falha.
 
 Converte essas verificações numa lista, linha a linha, do que difere e onde, resumida por gravidade; uma verificação que não pode ser executada é reportada em `skipped` e nunca passa em silêncio.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-fmea-table-check-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-fmea-table-check-flow-v5-light.svg" width="100%" alt="Estrutura do dsh-fmea-table-check: o material (file ou material, JSON/YAML) e o pacote de regras (rules/fmea-table-check.yaml, oito regras) alimentam quatro superfícies de leitura em paralelo — cabeçalho (FM-007), cadeia de análise (FM-001, FM-008), pontuações (FM-002, FM-003) e ações (FM-004, FM-005, FM-006); cada regra indica o tipo de verificação do motor e o estado nesta execução; em baixo, duas saídas separam issues (locator linha/campo, found, expected, fix, basis) de skipped (regra + motivo), e buildView projeta-os em markdown, reportJson e as contagens">
+</picture>
 
 Não julga se os modos de falha estão completos, se os efeitos foram analisados o suficiente, se as pontuações estão corretas ou se o risco é aceitável: esses são os juízos da equipa de estudo, e é aí que reside o valor do FMEA.
 
@@ -349,9 +354,9 @@ O plugin é **baseado em dados**: `src/model.ts` declara a forma da tabela e for
 | `tests/` | vitest; `fixtures/FM-00N/` guarda um par de fixtures conforme / infrator por regra |
 | `samples/quickstart/` | A amostra de um minuto (entrada, saída esperada e `run.mjs`) |
 | `scripts/` | Guardas mecânicas (`check-citations`, `check-lockfile-drift`, `check-readme-sync`, `verify-self-contained`) e o gerador de imagens `gen-readme-assets.py` |
-| `docs/assets/` | Imagens do README; `dsh-fmea-table-check-flow-{light,dark}.svg` é gerado pelo script de ativos |
+| `docs/assets/` | Imagens do README; `dsh-fmea-table-check-hero-{zh,en}-{light,dark}.webp` e `dsh-fmea-table-check-flow-v5-{light,dark}.svg` são gerados pelo script de ativos |
 
-As imagens do README são geradas programaticamente por [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Python + Pillow) e podem ser reexecutadas com segurança: `python scripts/gen-readme-assets.py`.
+As imagens do README são geradas programaticamente por [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Pillow para o banner localizado, SVG escrito à mão para o diagrama de estrutura) e podem ser reexecutadas com segurança: `python scripts/gen-readme-assets.py`.
 
 Topics: `dsh`, `dsh-plugin`, `deepseek-harness`, `deepseek`, `cordis`, `fmea`, `table`
 
