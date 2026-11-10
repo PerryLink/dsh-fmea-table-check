@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="660" viewBox="0 0 1100 660" role="img" aria-labelledby="title desc">
+<title id="title">dsh-fmea-table-check four reading surfaces with a dual outlet</title>
+<desc id="desc">Eight rules read one FMEA worksheet at four surfaces: the header (FM-007), the analysis chain (FM-001, FM-008), the scores (FM-002, FM-003) and the action closure (FM-004, FM-005, FM-006). Each rule shows the engine&#x27;s own check kind; unset configuration is dashed. The material and the rule pack both feed every surface, so no surface gates another. One run leaves 1 issue (FM-003, row 1, field rpn: 100 differs from 8 × 4 × 3 = 96) and 2 skipped rules (FM-004 threshold 0, FM-006 values []); issues carry locator, found, expected, fix and basis, skipped carries rule and reason, and buildView adds the counts and the disclaimer.</desc>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0.2" y2="1"><stop offset="0" stop-color="#131a2a"/><stop offset="1" stop-color="#0c1016"/></linearGradient>
+<filter id="soft" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000000" flood-opacity="0.50"/></filter>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#8496f5"/></marker>
+<pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1.2" cy="1.2" r="1.2" fill="#2a3346"/></pattern>
+</defs>
+<rect x="0" y="0" width="1100" height="660" fill="url(#bg)"/>
+<rect x="0" y="0" width="1100" height="660" fill="url(#dots)" opacity="0.55"/>
+<text x="44" y="58" fill="#f0f3f9" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="30" font-weight="700">dsh-fmea-table-check</text>
+<text x="44" y="86" fill="#a8b1c4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="14.5">Eight rules read one worksheet at four surfaces; an empty issue list is never “all clear”.</text>
+<rect x="813.0" y="32" width="243.0" height="28" rx="14.0" fill="#242d42"/>
+<text x="825.0" y="50.14" fill="#8496f5" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11.5">rules/fmea-table-check.yaml · v2026.1</text>
+<text x="44" y="112" fill="#737b8d" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">IN · file | material · JSON / YAML · rows[]</text>
+<text x="1056" y="112" fill="#737b8d" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" text-anchor="end">OUT · issues[] + skipped[]</text>
+<line x1="44" y1="126" x2="1056" y2="126" stroke="#2b3348" stroke-width="1"/>
+<rect x="44" y="138" width="286" height="162" rx="20" fill="#1b2231" stroke="#2e374b" stroke-width="1.5" filter="url(#soft)"/>
+<text x="60" y="160" fill="#737b8d" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11" font-weight="700" letter-spacing="1.0">MATERIAL · READ-ONLY</text>
+<text x="60" y="182" fill="#f0f3f9" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13.5" font-weight="700">FMEA worksheet</text>
+<text x="60" y="204" fill="#8496f5" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11.5">file | material</text>
+<text x="60" y="222" fill="#a8b1c4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">JSON / YAML · rows[] + header</text>
+<text x="60" y="240" fill="#a8b1c4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">row keys rows / items / failures / 失效</text>
+<text x="60" y="258" fill="#a8b1c4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">15 alias groups zh/en → fields</text>
+<text x="60" y="276" fill="#a8b1c4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">header item · team · method</text>
+<text x="60" y="294" fill="#a8b1c4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">signedAt · revision</text>
+<rect x="44" y="308" width="286" height="156" rx="20" fill="#1b2231" stroke="#2e374b" stroke-width="1.5" filter="url(#soft)"/>
+<text x="60" y="330" fill="#737b8d" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11" font-weight="700" letter-spacing="1.0">RULE PACK · DATA, NOT CODE</text>
+<text x="60" y="352" fill="#8496f5" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11.5">rules/fmea-table-check.yaml</text>
+<text x="60" y="376" fill="#a8b1c4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">8 rules · version 2026.1</text>
+<text x="60" y="394" fill="#a8b1c4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">validated on load: id · severity ·</text>
+<text x="60" y="412" fill="#a8b1c4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">basis.kind · excerpt ≥ 8 characters</text>
+<text x="60" y="434" fill="#737b8d" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">kind caps severity</text>
+<text x="60" y="452" fill="#a8b1c4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">principle ≤ warn · institutional ≤ info</text>
+<line x1="330" y1="219" x2="340" y2="219" stroke="#8496f5" stroke-width="1.5" opacity="0.75"/>
+<line x1="330" y1="386" x2="340" y2="386" stroke="#8496f5" stroke-width="1.5" opacity="0.75"/>
+<line x1="340" y1="219" x2="340" y2="386" stroke="#8496f5" stroke-width="1.5" opacity="0.75"/>
+<circle cx="340" cy="316" r="2.6" fill="#8496f5"/>
+<line x1="340" y1="316" x2="352" y2="316" stroke="#8496f5" stroke-width="1.5" marker-end="url(#arr)"/>
+<rect x="356" y="136" width="700" height="328" rx="20" fill="#171e2c" stroke="#2e374b" stroke-width="1.5" filter="url(#soft)"/>
+<text x="376" y="160" fill="#737b8d" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11" font-weight="700" letter-spacing="1.0">FOUR READING SURFACES · RUN IN PARALLEL</text>
+<circle cx="887" cy="156" r="3.2" fill="#d9a441"/>
+<text x="895" y="160" fill="#d9a441" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">diff</text>
+<circle cx="938.0" cy="156" r="3.2" fill="#3fb950"/>
+<text x="946.0" y="160" fill="#3fb950" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">clean</text>
+<circle cx="995.0" cy="156" r="3.2" fill="#737b8d"/>
+<text x="1003.0" y="160" fill="#737b8d" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">unset</text>
+<rect x="366" y="176" width="112" height="64" rx="14" fill="#242d42"/>
+<rect x="366" y="190" width="3" height="36" rx="1.5" fill="#8496f5"/>
+<text x="380" y="204" fill="#a8b1c4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13" font-weight="700" letter-spacing="0.6">HEADER</text>
+<text x="380" y="222" fill="#737b8d" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">1 rule</text>
+<rect x="490" y="178" width="272" height="60" rx="14" fill="#1b2231" stroke="#2e374b" stroke-width="1.3"/>
+<text x="504" y="200" fill="#f0f3f9" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="13" font-weight="700">FM-007</text>
+<text x="504" y="219" fill="#f0f3f9" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13">header item present</text>
+<text x="504" y="234" fill="#737b8d" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">headerPresence</text>
+<rect x="706.0" y="184" width="46.0" height="19" rx="9.5" fill="#16281c"/>
+<text x="714.0" y="197.46" fill="#3fb950" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">clean</text>
+<rect x="774" y="178" width="272" height="60" rx="14" fill="none" stroke="#2e374b" stroke-width="1.3" stroke-dasharray="5 5"/>
+<text x="788" y="198" fill="#737b8d" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11" font-weight="700">header scope</text>
+<text x="788" y="216" fill="#a8b1c4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">item · team · method ·</text>
+<text x="788" y="232" fill="#a8b1c4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">signedAt · revision</text>
+<rect x="366" y="248" width="112" height="64" rx="14" fill="#242d42"/>
+<rect x="366" y="262" width="3" height="36" rx="1.5" fill="#8496f5"/>
+<text x="380" y="276" fill="#a8b1c4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13" font-weight="700" letter-spacing="0.6">CHAIN</text>
+<text x="380" y="294" fill="#737b8d" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">2 rules</text>
+<rect x="490" y="250" width="272" height="60" rx="14" fill="#1b2231" stroke="#2e374b" stroke-width="1.3"/>
+<text x="504" y="272" fill="#f0f3f9" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="13" font-weight="700">FM-001</text>
+<text x="504" y="291" fill="#f0f3f9" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13">mode · effect · cause filled</text>
+<text x="504" y="306" fill="#737b8d" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">presenceAny</text>
+<rect x="706.0" y="256" width="46.0" height="19" rx="9.5" fill="#16281c"/>
+<text x="714.0" y="269.46" fill="#3fb950" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">clean</text>
+<rect x="774" y="250" width="272" height="60" rx="14" fill="#1b2231" stroke="#2e374b" stroke-width="1.3"/>
+<text x="788" y="272" fill="#f0f3f9" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="13" font-weight="700">FM-008</text>
+<text x="788" y="291" fill="#f0f3f9" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13">no placeholder terms</text>
+<text x="788" y="306" fill="#737b8d" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">containsAny</text>
+<rect x="990.0" y="256" width="46.0" height="19" rx="9.5" fill="#16281c"/>
+<text x="998.0" y="269.46" fill="#3fb950" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">clean</text>
+<rect x="366" y="320" width="112" height="64" rx="14" fill="#242d42"/>
+<rect x="366" y="334" width="3" height="36" rx="1.5" fill="#8496f5"/>
+<text x="380" y="348" fill="#a8b1c4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13" font-weight="700" letter-spacing="0.6">SCORES</text>
+<text x="380" y="366" fill="#737b8d" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">2 rules</text>
+<rect x="490" y="322" width="272" height="60" rx="14" fill="#1b2231" stroke="#2e374b" stroke-width="1.3"/>
+<text x="504" y="344" fill="#f0f3f9" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="13" font-weight="700">FM-002</text>
+<text x="504" y="363" fill="#f0f3f9" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13">severity is a number</text>
+<text x="504" y="378" fill="#737b8d" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">number</text>
+<rect x="706.0" y="328" width="46.0" height="19" rx="9.5" fill="#16281c"/>
+<text x="714.0" y="341.46" fill="#3fb950" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">clean</text>
+<rect x="774" y="322" width="272" height="60" rx="14" fill="#1b2231" stroke="#2e374b" stroke-width="1.3"/>
+<text x="788" y="344" fill="#f0f3f9" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="13" font-weight="700">FM-003</text>
+<text x="788" y="363" fill="#f0f3f9" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13">RPN = S × O × D</text>
+<text x="788" y="378" fill="#737b8d" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">productOf</text>
+<rect x="996.0" y="328" width="40.0" height="19" rx="9.5" fill="#2a2216"/>
+<text x="1004.0" y="341.46" fill="#d9a441" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">diff</text>
+<rect x="366" y="392" width="112" height="64" rx="14" fill="#242d42"/>
+<rect x="366" y="406" width="3" height="36" rx="1.5" fill="#8496f5"/>
+<text x="380" y="420" fill="#a8b1c4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13" font-weight="700" letter-spacing="0.6">ACTIONS</text>
+<text x="380" y="438" fill="#737b8d" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">3 rules</text>
+<rect x="490" y="394" width="176" height="60" rx="14" fill="#1b2231" stroke="#2e374b" stroke-width="1.3"/>
+<text x="504" y="416" fill="#f0f3f9" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="13" font-weight="700">FM-004</text>
+<text x="504" y="435" fill="#f0f3f9" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13">high risk needs action</text>
+<text x="504" y="450" fill="#737b8d" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">thresholdPresence</text>
+<rect x="610.0" y="400" width="46.0" height="19" rx="9.5" fill="#1b2231" stroke="#737b8d" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="618.0" y="413.46" fill="#737b8d" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">unset</text>
+<rect x="680" y="394" width="176" height="60" rx="14" fill="#1b2231" stroke="#2e374b" stroke-width="1.3"/>
+<text x="694" y="416" fill="#f0f3f9" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="13" font-weight="700">FM-005</text>
+<text x="694" y="435" fill="#f0f3f9" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13">action has owner/dueAt</text>
+<text x="694" y="450" fill="#737b8d" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">conditionalPresence</text>
+<rect x="800.0" y="400" width="46.0" height="19" rx="9.5" fill="#16281c"/>
+<text x="808.0" y="413.46" fill="#3fb950" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">clean</text>
+<rect x="870" y="394" width="176" height="60" rx="14" fill="#1b2231" stroke="#2e374b" stroke-width="1.3"/>
+<text x="884" y="416" fill="#f0f3f9" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="13" font-weight="700">FM-006</text>
+<text x="884" y="435" fill="#f0f3f9" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13">status vocabulary</text>
+<text x="884" y="450" fill="#737b8d" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">enum</text>
+<rect x="990.0" y="400" width="46.0" height="19" rx="9.5" fill="#1b2231" stroke="#737b8d" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="998.0" y="413.46" fill="#737b8d" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">unset</text>
+<rect x="44" y="476" width="408" height="120" rx="18" fill="#1b2231" stroke="#2e374b" stroke-width="1.5" filter="url(#soft)"/>
+<text x="60" y="500" fill="#8496f5" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11.5" font-weight="700">issues[] · located differences</text>
+<text x="60" y="523" fill="#a8b1c4" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">locator { row, field } · found · expected · fix · basis</text>
+<text x="60" y="543" fill="#f0f3f9" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">FM-003 · row 1 · field rpn · severity warn</text>
+<text x="60" y="563" fill="#d9a441" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">100 ≠ 8 × 4 × 3 = 96 · tolerance 0</text>
+<text x="60" y="583" fill="#737b8d" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">basis derived-from-principle · wording guard</text>
+<rect x="464" y="476" width="296" height="120" rx="18" fill="#1b2231" stroke="#2e374b" stroke-width="1.5" filter="url(#soft)"/>
+<text x="480" y="500" fill="#d9a441" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11.5" font-weight="700">skipped[] · never a silent pass</text>
+<text x="480" y="523" fill="#a8b1c4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">rule + reason, one entry per check</text>
+<text x="480" y="545" fill="#a8b1c4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">FM-004 · threshold 0 — unset</text>
+<text x="480" y="565" fill="#a8b1c4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">FM-006 · values [] — unset</text>
+<text x="480" y="587" fill="#8496f5" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11.5" font-weight="700">empty issues ≠ all clear</text>
+<rect x="772" y="476" width="284" height="120" rx="18" fill="#1b2231" stroke="#2e374b" stroke-width="1.5" filter="url(#soft)"/>
+<text x="788" y="500" fill="#8496f5" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11.5" font-weight="700">buildView()</text>
+<text x="788" y="523" fill="#a8b1c4" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">markdown + reportJson</text>
+<text x="788" y="543" fill="#f0f3f9" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">issueCount 1 · skippedCount 2</text>
+<text x="788" y="563" fill="#a8b1c4" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">summary warn 1 · info 0</text>
+<text x="788" y="583" fill="#737b8d" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">disclaimer always attached</text>
+<line x1="44" y1="612" x2="1056" y2="612" stroke="#2b3348" stroke-width="1"/>
+<text x="44" y="632" fill="#a8b1c4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">Four surfaces run in parallel; a rule that cannot run (field absent · threshold 0 · values []) is listed in skipped with its reason.</text>
+<text x="44" y="650" fill="#737b8d" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">no adjudication · original never modified · rulesFile / disabledRules / onlyRules / skipNotes / timeoutMs</text>
+</svg>
