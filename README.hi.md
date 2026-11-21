@@ -45,6 +45,11 @@ dsh plugin --profile <name> add dsh-fmea-table-check
   <img src="docs/assets/dsh-fmea-table-check-flow-v5-light.svg" width="100%" alt="dsh-fmea-table-check संरचना: सामग्री (file या material, JSON/YAML) और नियम-पैक (rules/fmea-table-check.yaml, आठ नियम) चार समानांतर पठन-सतहों में जाते हैं — शीर्षक (FM-007), विश्लेषण-शृंखला (FM-001, FM-008), अंक (FM-002, FM-003) और कार्रवाई (FM-004, FM-005, FM-006); प्रत्येक नियम के साथ इंजन का जाँच-प्रकार और इस रन की स्थिति; नीचे दो आउटलेट issues (locator पंक्ति/फ़ील्ड, found, expected, fix, basis) को skipped (नियम + कारण) से अलग रखते हैं, और buildView उन्हें markdown, reportJson और गणनाओं में बदलता है">
 </picture>
 
+![dsh-fmea-table-check का असली टर्मिनल रन](docs/assets/dsh-fmea-table-check-demo.gif)
+
+*इस रिपॉज़िटरी में दर्ज असली रन का एनिमेटेड रीप्ले।*
+
+
 यह नहीं आँकता कि विफलता-प्रकार पूरे हैं या नहीं, परिणाम पर्याप्त विश्लेषित हैं या नहीं, अंक सही हैं या नहीं, या जोखिम स्वीकार्य है या नहीं — वे अध्ययन दल के निर्णय हैं, और FMEA का मूल्य वहीं है।
 
 पूरी तरह ESM: कोई नेटवर्क अनुरोध नहीं, कोई मॉडल कॉल नहीं, और मूल कार्यपत्रक कभी नहीं बदलता।

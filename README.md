@@ -36,6 +36,10 @@ dsh plugin --profile <name> add dsh-fmea-table-check
 
 ## 它是什么
 
+![dsh-fmea-table-check 真实终端运行](docs/assets/dsh-fmea-table-check-demo.gif)
+
+*本仓库一次真实运行的动图回放。*
+
 `dsh-fmea-table-check` 读取一份 FMEA 分析表——行以表自身的列名为键，中文或英文均可——核对一张表在机械层面能够被要求的东西：基本分析链是否记录在案、严重度/频度/探测度是否为可运算的数值、风险顺序数（RPN）是否等于三者之积、高风险条目是否带有含责任人与完成期限的建议措施、措施状态是否取自你配置的口径、失效模式栏是否残留模板占位符。
 
 它把这些逐条变成「哪一行、哪一栏、差什么」的差异清单，并按严重级汇总；算不出来的检查写进 `skipped`，绝不静默通过。

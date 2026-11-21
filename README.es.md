@@ -45,6 +45,11 @@ Convierte esas comprobaciones en una lista, fila por fila, de qué difiere y dó
   <img src="docs/assets/dsh-fmea-table-check-flow-v5-light.svg" width="100%" alt="Estructura de dsh-fmea-table-check: el material (file o material, JSON/YAML) y el paquete de reglas (rules/fmea-table-check.yaml, ocho reglas) alimentan cuatro superficies de lectura en paralelo —cabecera (FM-007), cadena de análisis (FM-001, FM-008), puntuaciones (FM-002, FM-003) y acciones (FM-004, FM-005, FM-006)—; cada regla indica el tipo de comprobación del motor y su estado en esta ejecución; abajo, dos salidas separan issues (locator fila/campo, found, expected, fix, basis) de skipped (regla + motivo), y buildView los proyecta en markdown, reportJson y los recuentos">
 </picture>
 
+![dsh-fmea-table-check: ejecución real de terminal](docs/assets/dsh-fmea-table-check-demo.gif)
+
+*Repetición animada de una ejecución real registrada en este repositorio.*
+
+
 No juzga si los modos de fallo están completos, si los efectos se analizaron lo suficiente, si las puntuaciones son correctas o si el riesgo es aceptable: esos son los juicios del equipo de estudio, y ahí reside el valor del FMEA.
 
 ESM puro: sin peticiones de red, sin llamadas al modelo, y la hoja original nunca se modifica.

@@ -129,6 +129,10 @@ The plugin registers exactly one tool, `fmea_table_check`: it reads a worksheet,
 
 ### Examples
 
+![dsh-fmea-table-check: real terminal run](docs/assets/dsh-fmea-table-check-demo.gif)
+
+*Animated replay of a real run recorded in this repository.*
+
 The finding below is the plugin's real output on its own `FM-003` test fixture, not an illustration. The rule pack does not invent citations, so every finding names the clause it cites and states that the clause text was not obtained this time.
 
 **Tool** `fmea_table_check`
