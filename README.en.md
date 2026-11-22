@@ -7,6 +7,8 @@
 
 # dsh-fmea-table-check
 
+Current version `0.2.13`.
+
 **Turn an FMEA worksheet into a row-by-row list of what differs and where — the original is never modified, and the conclusion stays with the reviewer.**
 
 A DeepSeek Harness worksheet checker for quality and process engineers: it reads one FMEA sheet with Chinese or English headers, applies eight rules to the analysis chain, score operability, and RPN arithmetic, and lists only the differences it can point to in the material.
