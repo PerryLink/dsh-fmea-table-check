@@ -11,6 +11,8 @@
 
 गुणवत्ता और प्रक्रिया इंजीनियरों के लिए DeepSeek Harness का कार्यपत्रक जाँचक: चीनी या अंग्रेज़ी शीर्षकों वाला एक FMEA कार्यपत्रक पढ़ता है, विश्लेषण-शृंखला, अंकों की संक्रियात्मकता और RPN अंकगणित पर आठ नियम लगाता है, और केवल वही अंतर सूचीबद्ध करता है जिन्हें सामग्री में इंगित किया जा सके।
 
+अंतिम सत्यापन: DeepSeek Harness `dsh-v0.2.3-alpha.1` (2026-11-22).
+
 [इंस्टॉल](#तीन-चरणों-में-शुरुआत) · [कॉन्फ़िगरेशन](#कॉन्फ़िगरेशन) · [FAQ](#faq) · [简体中文](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [हिन्दी](README.hi.md)
 
 [![License](https://img.shields.io/badge/license-Apache--2.0-3366CC?style=flat-square&labelColor=2B3245)](LICENSE)
@@ -48,7 +50,6 @@ dsh plugin --profile <name> add dsh-fmea-table-check
 ![dsh-fmea-table-check का असली टर्मिनल रन](docs/assets/dsh-fmea-table-check-demo.gif)
 
 *इस रिपॉज़िटरी में दर्ज असली रन का एनिमेटेड रीप्ले।*
-
 
 यह नहीं आँकता कि विफलता-प्रकार पूरे हैं या नहीं, परिणाम पर्याप्त विश्लेषित हैं या नहीं, अंक सही हैं या नहीं, या जोखिम स्वीकार्य है या नहीं — वे अध्ययन दल के निर्णय हैं, और FMEA का मूल्य वहीं है।
 

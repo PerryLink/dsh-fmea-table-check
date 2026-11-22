@@ -11,6 +11,8 @@
 
 面向质量与工艺工程师的 DeepSeek Harness 表格核查插件：读入一份中英文表头的 FMEA 工作表，按 8 条规则核对分析链、评分可运算性与 RPN 乘积，只列材料内部能逐条指认的差异。
 
+最近一次核验：DeepSeek Harness `dsh-v0.2.3-alpha.1`（2026-11-22）。
+
 [安装](#三步上手) · [配置](#配置) · [FAQ](#faq) · [简体中文](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [हिन्दी](README.hi.md)
 
 [![License](https://img.shields.io/badge/license-Apache--2.0-3366CC?style=flat-square&labelColor=2B3245)](LICENSE)
